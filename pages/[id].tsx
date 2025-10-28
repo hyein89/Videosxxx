@@ -82,6 +82,16 @@ useEffect(() => {
         {/* Custom CSS */}
         <link href="/style.css" rel="stylesheet" />
 
+
+        <link
+          rel="icon"
+          type="image/webp"
+          href="/ico/Telegram_logo.svg.webp"
+        />
+
+        {/* Optional tambahan agar icon juga muncul di perangkat Apple */}
+        <link rel="apple-touch-icon" href="/ico/Telegram_logo.svg.webp" />
+        
         {/* Video.js */}
         <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
         <script src="https://vjs.zencdn.net/7.21.1/video.js" />
