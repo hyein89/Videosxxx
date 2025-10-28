@@ -1,0 +1,18 @@
+[
+  {
+    "id": "123abc",
+    "title": "Video Sample 1",
+    "img": "/thumbnail1.jpg",
+    "durasi": "00:30",
+    "date": "2025-10-28",
+    "video": "/video-sample.mp4"
+  },
+  {
+    "id": "456def",
+    "title": "Video Sample 2",
+    "img": "/thumbnail2.jpg",
+    "durasi": "01:15",
+    "date": "2025-10-27",
+    "video": "/video-sample.mp4"
+  }
+]
