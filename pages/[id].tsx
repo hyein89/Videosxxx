@@ -3,9 +3,6 @@ import Head from "next/head";
 import path from "path";
 import fs from "fs";
 import { useEffect } from "react";
-import videojs from "video.js";
-import "video.js/dist/video-js.css";
-import "videojs-ima/dist/videojs.ima.css";
 
 interface Video {
   id: string;
@@ -21,8 +18,10 @@ interface Props {
 }
 
 export default function VideoPlayer({ video }: Props) {
+
   useEffect(() => {
-    const player = videojs("my-video", {
+    // Ini pakai window.videojs karena CDN sudah di-load
+    const player = (window as any).videojs("my-video", {
       fluid: false,
       controlBar: { fullscreenToggle: false },
     });
@@ -74,10 +73,17 @@ export default function VideoPlayer({ video }: Props) {
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;600;700&display=swap"
           rel="stylesheet"
         />
-        <link
-          href="/style.css"
-          rel="stylesheet"
-        />
+        <link href="/style.css" rel="stylesheet" />
+
+        {/* Video.js CDN */}
+        <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
+        <script src="https://vjs.zencdn.net/7.21.1/video.js"></script>
+
+        {/* IMA CDN */}
+        <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-ads@6.9.0/dist/videojs.ads.min.js"></script>
+        <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.css" rel="stylesheet" />
       </Head>
 
       <div className="main-container">
