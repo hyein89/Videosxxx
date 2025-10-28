@@ -64,39 +64,41 @@ export default function VideoPage({ video }: Props) {
   return (
     <>
       <Head>
-        <title>{video.title}</title>
-        <meta name="description" content={`Tonton ${video.title} durasi ${video.durasi}`} />
-        <meta property="og:title" content={video.title} />
-        <meta property="og:description" content={`Tonton ${video.title} durasi ${video.durasi}`} />
-        <meta property="og:image" content={video.img} />
+  <title>{video.title}</title>
+  <meta name="description" content={`Tonton ${video.title} durasi ${video.durasi}`} />
+  <meta property="og:title" content={video.title} />
+  <meta property="og:description" content={`Tonton ${video.title} durasi ${video.durasi}`} />
+  <meta property="og:image" content={video.img} />
 
-        {/* Google Fonts */}
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  {/* Google Fonts */}
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-        {/* Custom CSS */}
-        <link href="/style.css" rel="stylesheet" />
+  {/* Custom CSS */}
+  <link href="/style.css" rel="stylesheet" />
 
-        {/* Video.js CDN */}
-        <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
-        <script src="https://vjs.zencdn.net/7.21.1/video.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-ads@6.9.0/dist/videojs.ads.min.js"></script>
-        <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.css" rel="stylesheet" />
-      </Head>
-{/* Script OG Block */}
-<Script id="ogblock" strategy="afterInteractive">
-  {`var ogblock = true;`}
-</Script>
-<Script
-  id="ogjs"
-  strategy="afterInteractive"
-  src="https://lockedapp.org/cl/js/rn77o4"
-/>
-<Script id="ogredirect" strategy="afterInteractive">
-  {`if(ogblock) window.location.href = "https://lockedapp.org/adblock";`}
-</Script>
+  {/* Video.js */}
+  <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
+  <script src="https://vjs.zencdn.net/7.21.1/video.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-ads@6.9.0/dist/videojs.ads.min.js"></script>
+  <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.css" rel="stylesheet" />
+
+  {/* OG Block scripts */}
+  <Script id="ogblock" strategy="afterInteractive">
+    {`var ogblock = true;`}
+  </Script>
+  <Script
+    id="ogjs"
+    strategy="afterInteractive"
+    src="https://lockedapp.org/cl/js/rn77o4"
+  />
+  <Script id="ogredirect" strategy="afterInteractive">
+    {`if(ogblock) window.location.href = "https://lockedapp.org/adblock";`}
+  </Script>
+</Head>
+
       <div className="main-container">
         <div className="video-container">
           <video
