@@ -69,10 +69,9 @@ export default function VideoPlayer({ video }: Props) {
         <meta property="og:title" content={video.title} />
         <meta property="og:description" content={`Tonton ${video.title} durasi ${video.durasi}`} />
         <meta property="og:image" content={video.img} />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
+        
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Material+Icons" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>.
         <link href="/style.css" rel="stylesheet" />
 
         {/* Video.js CDN */}
