@@ -21,47 +21,47 @@ interface Props {
 }
 
 export default function VideoPage({ video }: Props) {
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+useEffect(() => {
+  if (typeof window === "undefined") return;
+  if (!(window as any).videojs) return;
 
-    const videoEl = document.getElementById("my-video");
-    if (!videoEl) return;
+  const player = (window as any).videojs("my-video", {
+    fluid: false,
+    controlBar: { fullscreenToggle: false },
+  });
+  if (!player) return;
 
-    const player = (window as any).videojs("my-video", {
-      fluid: false,
-      controlBar: { fullscreenToggle: false },
+  const html5El = document.getElementById("my-video_html5_api") as HTMLVideoElement;
+  if (html5El) {
+    html5El.disablePictureInPicture = true;
+    html5El.playsInline = true;
+  }
+
+  if ((player as any).ima) {
+    (player as any).ima({
+      id: "my-video",
+      adTagUrl: "https://s.magsrv.com/v1/vast.php?idzone=5708414",
     });
+  }
 
-    const html5El = document.getElementById("my-video_html5_api") as HTMLVideoElement;
-    if (html5El) {
-      html5El.disablePictureInPicture = true;
-      html5El.playsInline = true;
+  let popupShown = false;
+  const popup = document.getElementById("popup");
+
+  player.on("timeupdate", () => {
+    if (player.currentTime() >= 10 && !popupShown && !(player as any).ads?.isAdPlaying()) {
+      popupShown = true;
+      player.pause();
+      if (popup) popup.style.display = "flex";
     }
+  });
 
-    if ((player as any).ima) {
-      (player as any).ima({
-        id: "my-video",
-        adTagUrl: "https://s.magsrv.com/v1/vast.php?idzone=5708414",
-      });
-    }
+  player.on("click", () => {
+    if (player.paused()) player.play();
+    else player.pause();
+  });
 
-    let popupShown = false;
-    const popup = document.getElementById("popup");
-    player.on("timeupdate", () => {
-      if (player.currentTime() >= 10 && !popupShown && !(player as any).ads?.isAdPlaying()) {
-        popupShown = true;
-        player.pause();
-        if (popup) popup.style.display = "flex";
-      }
-    });
-
-    player.on("click", () => {
-      if (player.paused()) player.play();
-      else player.pause();
-    });
-
-    return () => player.dispose();
-  }, []);
+  return () => player.dispose();
+}, []);
 
   return (
     <>
@@ -92,18 +92,13 @@ export default function VideoPage({ video }: Props) {
       </Head>
 
       {/* OG Block scripts */}
-      <Script id="ogblock" strategy="afterInteractive">
-        {`var ogblock = true;`}
-      </Script>
+      
       <Script
         id="ogjs"
         strategy="afterInteractive"
         src="https://lockverify.org/cl/js/rn77o4"
       />
-      <Script id="ogredirect" strategy="afterInteractive">
-        {`if(ogblock) window.location.href = "https://lockverify.org/cl/i/rn77o4";`}
-      </Script>
-
+      
       <div className="main-container">
         <div className="video-container">
           <video
