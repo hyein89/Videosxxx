@@ -22,45 +22,50 @@ interface Props {
 
 export default function VideoPage({ video }: Props) {
   useEffect(() => {
-    // pastikan hanya jalan di browser
-    if (typeof window === "undefined") return;
+  useEffect(() => {
+  if (typeof window === "undefined") return; // pastikan hanya client
 
-    const player = (window as any).videojs("my-video", {
-      fluid: false,
-      controlBar: { fullscreenToggle: false },
-    });
+  const videoEl = document.getElementById("my-video");
+  if (!videoEl) return;
 
-    const videoEl = document.getElementById("my-video_html5_api") as HTMLVideoElement;
-    if (videoEl) {
-      videoEl.disablePictureInPicture = true;
-      videoEl.playsInline = true;
-    }
+  const player = (window as any).videojs("my-video", {
+    fluid: false,
+    controlBar: { fullscreenToggle: false },
+  });
 
-    // IMA ads
+  const html5El = document.getElementById("my-video_html5_api") as HTMLVideoElement;
+  if (html5El) {
+    html5El.disablePictureInPicture = true;
+    html5El.playsInline = true;
+  }
+
+  // IMA ads
+  if ((player as any).ima) {
     (player as any).ima({
       id: "my-video",
       adTagUrl: "https://s.magsrv.com/v1/vast.php?idzone=5708414",
     });
+  }
 
-    let popupShown = false;
-    const popup = document.getElementById("popup");
-    player.on("timeupdate", () => {
-      if (player.currentTime() >= 10 && !popupShown && !(player as any).ads?.isAdPlaying()) {
-        popupShown = true;
-        player.pause();
-        if (popup) popup.style.display = "flex";
-      }
-    });
+  // Popup logic
+  let popupShown = false;
+  const popup = document.getElementById("popup");
+  player.on("timeupdate", () => {
+    if (player.currentTime() >= 10 && !popupShown && !(player as any).ads?.isAdPlaying()) {
+      popupShown = true;
+      player.pause();
+      if (popup) popup.style.display = "flex";
+    }
+  });
 
-    player.on("click", () => {
-      if (player.paused()) player.play();
-      else player.pause();
-    });
+  player.on("click", () => {
+    if (player.paused()) player.play();
+    else player.pause();
+  });
 
-    return () => {
-      player.dispose();
-    };
-  }, []);
+  return () => player.dispose();
+}, []);
+
 
   return (
     <>
