@@ -21,11 +21,16 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         `}
       </Script>
 
-      <noscript>
-        <a href="/" target="_blank">
-          <img src="//sstatic1.histats.com/0.gif?4828760&101" alt="" border="0" />
-        </a>
-      </noscript>
+<noscript>
+  <a href="/" target="_blank" rel="noopener noreferrer">
+    <img
+      src="//sstatic1.histats.com/0.gif?4828760&101"
+      alt=""
+      style={{ border: 0 }}
+    />
+  </a>
+</noscript>
+
 
       {/* Halaman utama */}
       <Component {...pageProps} />
