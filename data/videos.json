@@ -2,8 +2,8 @@
   {
     "id": "123abc",
     "title": "Video Sample 1",
-    "img": "/thumbnail1.jpg",
-    "durasi": "00:30",
+    "img": "https://iili.io/K6lf6OB.jpg",
+    "durasi": "10:19",
     "date": "2025-10-28",
     "video": "/BOLOS_Ke _HOTEL_(480).mp4"
   },
