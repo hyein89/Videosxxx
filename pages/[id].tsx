@@ -127,6 +127,14 @@ useEffect(() => {
             <p className="vjs-no-js">Enable JavaScript or a browser that supports HTML5 video.</p>
           </video>
 
+
+          <Script
+          id="ads-script"
+          type="text/javascript"
+          src="//signingunwilling.com/5e/c1/53/5ec153cb2f70402e131fa674cee250c4.js"
+          strategy="afterInteractive"
+        />
+          
           <div className="popup-overlay" id="popup" style={{ display: "none" }}>
             <p>
               Streaming is Blocked in Your Country
