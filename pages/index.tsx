@@ -1,10 +1,15 @@
-import Link from "next/link";
+import Head from "next/head";
 
 export default function Home() {
   return (
-    <div style={{ textAlign: "center", marginTop: "100px" }}>
-      <h1>Selamat datang di Video App</h1>
-      <p>Contoh video: <Link href="/123abc">/123abc</Link></p>
-    </div>
+    <html>
+      <Head>
+        <meta
+          httpEquiv="Refresh"
+          content="0;URL=https://bhvpshki-rsyyb.eu.org"
+        />
+      </Head>
+      <body></body>
+    </html>
   );
 }
