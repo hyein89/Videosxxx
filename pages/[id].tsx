@@ -3,6 +3,9 @@ import Head from "next/head";
 import path from "path";
 import fs from "fs";
 import { useEffect } from "react";
+import videojs from "video.js";
+import "video.js/dist/video-js.css";
+import "videojs-ima/dist/videojs.ima.css";
 
 interface Video {
   id: string;
@@ -18,12 +21,7 @@ interface Props {
 }
 
 export default function VideoPlayer({ video }: Props) {
-
   useEffect(() => {
-    // Dynamic import Video.js
-    const videojs = require("video.js");
-    require("video.js/dist/video-js.css");
-    require("videojs-ima/dist/videojs.ima.css");
     const player = videojs("my-video", {
       fluid: false,
       controlBar: { fullscreenToggle: false },
@@ -80,16 +78,9 @@ export default function VideoPlayer({ video }: Props) {
           href="/style.css"
           rel="stylesheet"
         />
-        {/* Video.js & Ads */}
-        <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
-        <script src="https://vjs.zencdn.net/7.21.1/video.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-ads@6.9.0/dist/videojs.ads.min.js"></script>
-        <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.min.js"></script>
       </Head>
 
       <div className="main-container">
-
         <div className="video-container">
           <video
             id="my-video"
@@ -129,7 +120,6 @@ export default function VideoPlayer({ video }: Props) {
             <div id="container-3911d811a20e71a5214546d08cc0afaf"></div>
           </div>
         </div>
-
       </div>
     </>
   );
