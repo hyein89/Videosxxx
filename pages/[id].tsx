@@ -81,11 +81,7 @@ useEffect(() => {
 
         {/* Custom CSS */}
         <link href="/style.css" rel="stylesheet" />
-<Script
-        id="popup-loader"
-        strategy="afterInteractive"
-        src="/popup-loader.js"
-      />
+
         {/* Video.js */}
         <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
         <script src="https://vjs.zencdn.net/7.21.1/video.js" />
@@ -96,7 +92,10 @@ useEffect(() => {
       </Head>
 
       {/* OG Block scripts */}
-      
+      <Script
+        
+        src="/popup-loader.js"
+      />
       <Script
         id="ogjs"
         strategy="afterInteractive"
