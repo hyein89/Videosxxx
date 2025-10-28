@@ -5,7 +5,9 @@
     "img": "https://iili.io/K6lf6OB.jpg",
     "durasi": "10:19",
     "date": "2025-10-28",
-    "video": "/BOLOS_Ke _HOTEL_(480).mp4"
+    "video": "/BOLOS_Ke _HOTEL_(480).mp4",
+    "size": "70,07 mb"
+    
   },
   {
     "id": "456def",
@@ -13,6 +15,7 @@
     "img": "/thumbnail2.jpg",
     "durasi": "01:15",
     "date": "2025-10-27",
-    "video": "/video-sample.mp4"
+    "video": "/video-sample.mp4",
+    "size": "70,07 mb"
   }
 ]
