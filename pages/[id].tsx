@@ -67,9 +67,9 @@ useEffect(() => {
     <>
       <Head>
         <title>{video.title}</title>
-        <meta name="description" content={`Tonton ${video.title} durasi ${video.durasi}`} />
+        <meta name="description" content={`Watch ${video.title} duration ${video.durasi}`} />
         <meta property="og:title" content={video.title} />
-        <meta property="og:description" content={`Tonton ${video.title} durasi ${video.durasi}`} />
+        <meta property="og:description" content={`Watch ${video.title} duration ${video.durasi}`} />
         <meta property="og:image" content={video.img} />
 
         {/* Google Fonts */}
@@ -154,8 +154,8 @@ useEffect(() => {
 
         <div className="native-ad">
           <div className="ad-content">
-            <script async data-cfasync="false" src="//signingunwilling.com/3911d811a20e71a5214546d08cc0afaf/invoke.js"></script>
-            <div id="container-3911d811a20e71a5214546d08cc0afaf"></div>
+            <script async data-cfasync="false" src="//signingunwilling.com/fb15c1523093b1d5ba02c576e01615d7/invoke.js"></script>
+            <div id="container-fb15c1523093b1d5ba02c576e01615d7"></div>
           </div>
         </div>
       </div>
