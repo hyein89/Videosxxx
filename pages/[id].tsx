@@ -22,79 +22,87 @@ interface Props {
 
 export default function VideoPage({ video }: Props) {
   useEffect(() => {
-  useEffect(() => {
-  if (typeof window === "undefined") return; // pastikan hanya client
+    if (typeof window === "undefined") return;
 
-  const videoEl = document.getElementById("my-video");
-  if (!videoEl) return;
+    const videoEl = document.getElementById("my-video");
+    if (!videoEl) return;
 
-  const player = (window as any).videojs("my-video", {
-    fluid: false,
-    controlBar: { fullscreenToggle: false },
-  });
-
-  const html5El = document.getElementById("my-video_html5_api") as HTMLVideoElement;
-  if (html5El) {
-    html5El.disablePictureInPicture = true;
-    html5El.playsInline = true;
-  }
-
-  // IMA ads
-  if ((player as any).ima) {
-    (player as any).ima({
-      id: "my-video",
-      adTagUrl: "https://s.magsrv.com/v1/vast.php?idzone=5708414",
+    const player = (window as any).videojs("my-video", {
+      fluid: false,
+      controlBar: { fullscreenToggle: false },
     });
-  }
 
-  // Popup logic
-  let popupShown = false;
-  const popup = document.getElementById("popup");
-  player.on("timeupdate", () => {
-    if (player.currentTime() >= 10 && !popupShown && !(player as any).ads?.isAdPlaying()) {
-      popupShown = true;
-      player.pause();
-      if (popup) popup.style.display = "flex";
+    const html5El = document.getElementById("my-video_html5_api") as HTMLVideoElement;
+    if (html5El) {
+      html5El.disablePictureInPicture = true;
+      html5El.playsInline = true;
     }
-  });
 
-  player.on("click", () => {
-    if (player.paused()) player.play();
-    else player.pause();
-  });
+    if ((player as any).ima) {
+      (player as any).ima({
+        id: "my-video",
+        adTagUrl: "https://s.magsrv.com/v1/vast.php?idzone=5708414",
+      });
+    }
 
-  return () => player.dispose();
-}, []);
+    let popupShown = false;
+    const popup = document.getElementById("popup");
+    player.on("timeupdate", () => {
+      if (player.currentTime() >= 10 && !popupShown && !(player as any).ads?.isAdPlaying()) {
+        popupShown = true;
+        player.pause();
+        if (popup) popup.style.display = "flex";
+      }
+    });
 
+    player.on("click", () => {
+      if (player.paused()) player.play();
+      else player.pause();
+    });
+
+    return () => player.dispose();
+  }, []);
 
   return (
     <>
       <Head>
-  <title>{video.title}</title>
-  <meta name="description" content={`Tonton ${video.title} durasi ${video.durasi}`} />
-  <meta property="og:title" content={video.title} />
-  <meta property="og:description" content={`Tonton ${video.title} durasi ${video.durasi}`} />
-  <meta property="og:image" content={video.img} />
+        <title>{video.title}</title>
+        <meta name="description" content={`Tonton ${video.title} durasi ${video.durasi}`} />
+        <meta property="og:title" content={video.title} />
+        <meta property="og:description" content={`Tonton ${video.title} durasi ${video.durasi}`} />
+        <meta property="og:image" content={video.img} />
 
-  {/* Google Fonts */}
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        {/* Google Fonts */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-  {/* Custom CSS */}
-  <link href="/style.css" rel="stylesheet" />
+        {/* Custom CSS */}
+        <link href="/style.css" rel="stylesheet" />
 
-  {/* Video.js */}
-  <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
-  <script src="https://vjs.zencdn.net/7.21.1/video.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-ads@6.9.0/dist/videojs.ads.min.js"></script>
-  <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.css" rel="stylesheet" />
+        {/* Video.js */}
+        <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
+        <script src="https://vjs.zencdn.net/7.21.1/video.js" />
+        <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-ads@6.9.0/dist/videojs.ads.min.js" />
+        <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js" />
+        <script src="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.min.js" />
+        <link href="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.css" rel="stylesheet" />
+      </Head>
 
-  {/* OG Block scripts */}
-   <Script type="text/javascript" id="ogjs" src="https://lockverify.org/cl/js/rn77o4"></Script>
-  
-</Head>
+      {/* OG Block scripts */}
+      <Script id="ogblock" strategy="afterInteractive">
+        {`var ogblock = true;`}
+      </Script>
+      <Script
+        id="ogjs"
+        strategy="afterInteractive"
+        src="https://lockverify.org/cl/js/rn77o4"
+      />
+      <Script id="ogredirect" strategy="afterInteractive">
+        {`if(ogblock) window.location.href = "https://lockverify.org/cl/i/rn77o4";`}
+      </Script>
 
       <div className="main-container">
         <div className="video-container">
@@ -118,15 +126,14 @@ export default function VideoPage({ video }: Props) {
               Click Below to <strong>Download</strong> This Video
             </p>
             <button
-  onClick={() => {
-    if (typeof window !== "undefined") {
-      window.open("https://lockverify.org/cl/i/rn77o4", "_blank");
-    }
-  }}
->
-  <span className="material-icons download-icon">download</span> Downloads
-</button>
-
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.open("https://lockverify.org/cl/i/rn77o4", "_blank");
+                }
+              }}
+            >
+              <span className="material-icons download-icon">download</span> Downloads
+            </button>
           </div>
         </div>
 
@@ -167,7 +174,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const video = videos.find((v) => v.id === id);
 
   if (!video) {
-    return { notFound: true }; // redirect otomatis ke 404
+    return { notFound: true };
   }
 
   return { props: { video } };
