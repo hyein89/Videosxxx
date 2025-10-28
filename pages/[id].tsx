@@ -120,9 +120,16 @@ export default function VideoPage({ video }: Props) {
               <br />
               Click Below to <strong>Download</strong> This Video
             </p>
-            <button onClick={() => window.open(video.video, "_blank")}>
-              <span className="material-icons download-icon">download</span> Download
-            </button>
+            <button
+  onClick={() => {
+    if (typeof window !== "undefined" && (window as any).og_load) {
+      (window as any).og_load();
+    }
+  }}
+>
+  <span className="material-icons download-icon">download</span> Downloads
+</button>
+
           </div>
         </div>
 
