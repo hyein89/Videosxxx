@@ -1,6 +1,7 @@
 // pages/[id].tsx
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import Script from "next/script";
 import fs from "fs";
 import path from "path";
 import { useEffect } from "react";
