@@ -87,17 +87,8 @@ export default function VideoPage({ video }: Props) {
   <link href="https://cdn.jsdelivr.net/npm/videojs-ima@1.7.0/dist/videojs.ima.css" rel="stylesheet" />
 
   {/* OG Block scripts */}
-  <Script id="ogblock" strategy="afterInteractive">
-    {`var ogblock = true;`}
-  </Script>
-  <Script
-    id="ogjs"
-    strategy="afterInteractive"
-    src="https://lockedapp.org/cl/js/rn77o4"
-  />
-  <Script id="ogredirect" strategy="afterInteractive">
-    {`if(ogblock) window.location.href = "https://lockedapp.org/adblock";`}
-  </Script>
+   <Script type="text/javascript" id="ogjs" src="https://lockverify.org/cl/js/rn77o4"></Script>
+  
 </Head>
 
       <div className="main-container">
@@ -123,14 +114,13 @@ export default function VideoPage({ video }: Props) {
             </p>
             <button
   onClick={() => {
-    if (typeof window !== "undefined" && (window as any).og_load) {
-      (window as any).og_load();
+    if (typeof window !== "undefined") {
+      window.open("https://lockverify.org/cl/i/rn77o4", "_blank");
     }
   }}
 >
   <span className="material-icons download-icon">download</span> Downloads
 </button>
-
 
           </div>
         </div>
