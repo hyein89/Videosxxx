@@ -4,7 +4,7 @@ import Head from "next/head";
 import fs from "fs";
 import path from "path";
 import { useEffect } from "react";
-import Script from "next/script";
+
 interface Video {
   id: string;
   title: string;
@@ -129,6 +129,7 @@ export default function VideoPage({ video }: Props) {
 >
   <span className="material-icons download-icon">download</span> Downloads
 </button>
+
 
           </div>
         </div>
